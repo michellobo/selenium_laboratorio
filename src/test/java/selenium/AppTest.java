@@ -28,13 +28,15 @@ import java.util.concurrent.TimeUnit;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest 
 {
-    
+    private final static Logger LOGGER = Logger.getLogger("devops.subnivel.Control");    
     private WebDriver driver;
 
     @Before
@@ -46,115 +48,45 @@ public class AppTest
 
     @Test
     public void prueba(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
-        Date date = new Date();
-        String date1= dateFormat.format(date);
-        String mail="a@m"+date1+".com";
-        String name="José";
-        String lastName="Lopez";
-        String company="Karibu";
-        String address1="San Francisco";
-        String address2="467";
-        String city="Santiago";
-        String phone="12345679";
-        String phone_mobile="12345678";
-        String postcode = "12345";
-        String state = "Connecticut";
-        driver.get("http://automationpractice.com/index.php");
-        driver.manage().window().maximize();
-        driver.findElement(By.cssSelector("#homefeatured > .ajax_block_product:nth-child(1) .replace-2x")).click(); 
-        driver.findElement(By.cssSelector(".exclusive > span")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.cssSelector(".button-medium > span")).click();
-        driver.findElement(By.cssSelector(".standard-checkout > span")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.id("email_create")).click();
-        driver.findElement(By.id("email_create")).sendKeys(mail);
-        driver.findElement(By.cssSelector("#SubmitCreate > span")).click();
-        driver.findElement(By.id("id_gender1")).click();
-        driver.findElement(By.id("customer_firstname")).click();
-        driver.findElement(By.id("customer_firstname")).sendKeys(name);
-        driver.findElement(By.id("customer_lastname")).click();
-        driver.findElement(By.id("customer_lastname")).sendKeys(lastName);
-        driver.findElement(By.id("email")).click();
-        driver.findElement(By.cssSelector(".password")).click();
-        driver.findElement(By.id("passwd")).click();
-        driver.findElement(By.id("passwd")).sendKeys("12345");
-        driver.findElement(By.cssSelector(".account_creation:nth-child(1)")).click();
-        driver.findElement(By.id("days")).click();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//*[@id='days']/option[6]")).click();
-        driver.findElement(By.id("months")).click();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//*[@id='months']/option[5]")).click();
-        driver.findElement(By.id("years")).click();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//*[@id='years']/option[7]")).click();
-        driver.findElement(By.id("company")).click();
-        driver.findElement(By.id("company")).sendKeys(company);
-        driver.findElement(By.id("address1")).click();
-        driver.findElement(By.id("address1")).sendKeys(address1);
-        driver.findElement(By.cssSelector(".is_customer_param > .inline-infos")).click();
-        driver.findElement(By.id("address2")).click();
-        driver.findElement(By.id("address2")).sendKeys(address2);
-        driver.findElement(By.id("city")).click();
-        driver.findElement(By.id("city")).sendKeys(city);
-        driver.findElement(By.id("id_state")).click();
-        {
-          WebElement dropdown = driver.findElement(By.id("id_state"));
-          dropdown.findElement(By.xpath("//option[. = '"+state+"']")).click();
-        }
-        driver.findElement(By.cssSelector("#id_country > option:nth-child(2)")).click();
-        String country = driver.findElement(By.xpath("//*[@id='id_country']/option[2]")).getText();
-        driver.findElement(By.id("postcode")).click();
-        driver.findElement(By.id("postcode")).sendKeys(postcode);
-        driver.findElement(By.id("other")).click();
-        driver.findElement(By.id("other")).sendKeys("hola");
-        driver.findElement(By.id("phone")).click();
-        driver.findElement(By.id("phone")).sendKeys(phone);
-        driver.findElement(By.id("phone_mobile")).click();
-        driver.findElement(By.id("phone_mobile")).sendKeys(phone_mobile);
-        driver.findElement(By.cssSelector("#submitAccount > span")).click();
-        String validate1 = driver.findElement(By.xpath("//*[@id='address_delivery']/li[2]")).getText();
-        String validate2 = driver.findElement(By.xpath("//*[@id='address_delivery']/li[3]")).getText();
-        String validate3 = driver.findElement(By.xpath("//*[@id='address_delivery']/li[4]")).getText();
-        String validate4 = driver.findElement(By.xpath("//*[@id='address_delivery']/li[5]")).getText();
-        String validate5 = driver.findElement(By.xpath("//*[@id='address_delivery']/li[6]")).getText();
-        String validate6 = driver.findElement(By.xpath("//*[@id='address_delivery']/li[7]")).getText();
-        String validate7 = driver.findElement(By.xpath("//*[@id='address_delivery']/li[8]")).getText();
-        assertEquals(name +" "+lastName, validate1);
-        assertEquals(company, validate2);
-        assertEquals(address1 + " " + address2, validate3);
-        assertEquals(city +", "+ state +" "+postcode, validate4);
-        assertEquals(country, validate5);
-        assertEquals(phone, validate6);
-        assertEquals(phone_mobile, validate7);
-        validate1 = driver.findElement(By.xpath("//*[@id='address_invoice']/li[2]")).getText();
-        validate2 = driver.findElement(By.xpath("//*[@id='address_invoice']/li[3]")).getText();
-        validate3 = driver.findElement(By.xpath("//*[@id='address_invoice']/li[4]")).getText();
-        validate4 = driver.findElement(By.xpath("//*[@id='address_invoice']/li[5]")).getText();
-        validate5 = driver.findElement(By.xpath("//*[@id='address_invoice']/li[6]")).getText();
-        validate6 = driver.findElement(By.xpath("//*[@id='address_invoice']/li[7]")).getText();
-        validate7 = driver.findElement(By.xpath("//*[@id='address_invoice']/li[8]")).getText();
-        assertEquals(name +" "+lastName, validate1);
-        assertEquals(company, validate2);
-        assertEquals(address1 + " " + address2, validate3);
-        assertEquals(city +", "+ state +" "+postcode, validate4);
-        assertEquals(country, validate5);
-        assertEquals(phone, validate6);
-        assertEquals(phone_mobile, validate7);
-        driver.findElement(By.xpath("//*[@id='center_column']/form/p/button/span")).click();
-        driver.findElement(By.id("cgv")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.cssSelector(".standard-checkout > span")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.linkText("Pay by bank wire (order processing will be longer)")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.cssSelector("#cart_navigation span")).click();
+        // test(String inputSueldo, String inputSaldo, String retiroCorrecto, String saldoRestantoCorrecto, String impuestoCorrecto)
+        this.test("1900000", "12000000", "1.200.000", "10.800.000", "96.000");
     }
+
     @After
     public void tearDown() {
         driver.close(); // Cierra el navegador actual abierto por el Script 
         driver.quit();  // Cierra todas las sesiones abiertas por el Script
+    }
+
+    public void test(String inputSueldo, String inputSaldo, String retiroCorrecto, String saldoRestantoCorrecto, String impuestoCorrecto) {
+        driver.get("http://localhost:3000/");
+        driver.manage().window().maximize();
+        driver.findElement(By.id("inputSueldo")).clear();
+        driver.findElement(By.id("inputSueldo")).sendKeys(inputSueldo);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.id("inputSaldo")).clear();
+        driver.findElement(By.id("inputSaldo")).sendKeys(inputSaldo);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.id("botonEnviar")).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Resultados
+        String retiro = driver.findElement(By.id("retiro")).getText();
+        String saldo = driver.findElement(By.id("saldo")).getText();
+        String impuesto = driver.findElement(By.id("impuesto")).getText();
+        //Validaciones
+        LOGGER.log(Level.INFO, "---- RETIRO ----");
+        LOGGER.log(Level.INFO, "retiro---- "+retiro+" ----");
+        LOGGER.log(Level.INFO, "retiroCorrecto---- "+retiroCorrecto+" ----");
+        LOGGER.log(Level.INFO, "---- SALDO ----");
+        LOGGER.log(Level.INFO, "saldo---- "+saldo+" ----");
+        LOGGER.log(Level.INFO, "saldoRestantoCorrecto---- "+saldoRestantoCorrecto+" ----");
+        LOGGER.log(Level.INFO, "---- IMPUESTO ----");
+        LOGGER.log(Level.INFO, "impuesto---- "+impuesto+" ----");
+        LOGGER.log(Level.INFO, "impuestoCorrecto---- "+impuestoCorrecto+" ----");
+        assertEquals(retiroCorrecto, retiro);
+        assertEquals(saldoRestantoCorrecto, saldo);
+        assertEquals(impuestoCorrecto, impuesto);
+        driver.findElement(By.id("botonLimpiar")).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 }
