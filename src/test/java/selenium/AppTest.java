@@ -212,7 +212,7 @@ public class AppTest {
 		driver.findElement(By.id("inputSaldo")).clear();
 		driver.findElement(By.id("inputSaldo")).sendKeys(inputSaldo);
 		driver.findElement(By.id("botonEnviar")).click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		// Resultados
 		String retiro = driver.findElement(By.id("retiro")).getText();
 		String saldo = driver.findElement(By.id("saldo")).getText();
