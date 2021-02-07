@@ -45,6 +45,7 @@ public class AppTest {
 		Date now = new Date();
 		String strDate = sdfDate.format(now);
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		// Call MiNdicador API para UF Online
         /*
 		String uri = "https://mindicador.cl/api/uf/" + strDate;
