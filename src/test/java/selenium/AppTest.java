@@ -43,6 +43,8 @@ public class AppTest {
         System.out.println(System.getProperty("os.name"));
         if(System.getProperty("os.name").contains("Mac")){
             System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_mac64/chromedriver");
+        } else if (System.getProperty("os.name").contains("Windows")){
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_win32");
         } else {
             System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
         }
