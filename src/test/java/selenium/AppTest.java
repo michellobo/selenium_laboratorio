@@ -58,7 +58,6 @@ public class AppTest {
 		try {
 			body = Unirest.get(uri).asJson().getBody();
             JSONObject json = body.getObject();
-            System.out.println(json);
 			uf = json.getJSONArray("serie").getJSONObject(0).getDouble("valor");
 		} catch (UnirestException e) {
 			LOGGER.log(Level.INFO, "error---- " + e + " ----");
@@ -72,7 +71,7 @@ public class AppTest {
         LOGGER.log(Level.INFO, "########################################> ahorroMenorUnMillon_y_sinImpuesto <########################################");
         this.test("900000", "800000", "800.000", "0", "0");
     }
-/*
+
     @Test
     // test(inputSueldo, inputSaldo, retiroCorrecto, saldoRestantoCorrecto, impuestoCorrecto)
     public void ahorroMenorUnMillon_y_primerTramoImpuesto() {
@@ -202,7 +201,7 @@ public class AppTest {
         String output2 = myFormatter.format(value2);
         this.test("4250000", "12000000", output, output2, output1);
     }
-*/
+
 	@After
 	public void tearDown() {
 		driver.close(); // Cierra el navegador actual abierto por el Script
