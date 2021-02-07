@@ -44,6 +44,7 @@ public class AppTest {
 		SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
 		Date now = new Date();
 		String strDate = sdfDate.format(now);
+        driver = new ChromeDriver();
 		// Call MiNdicador API para UF Online
 		String uri = "https://mindicador.cl/api/uf/" + strDate;
 		JsonNode body;
@@ -54,7 +55,7 @@ public class AppTest {
 		} catch (UnirestException e) {
 			LOGGER.log(Level.INFO, "error---- " + e + " ----");
 		}
-		driver = new ChromeDriver();
+		//driver = new ChromeDriver();
 	}
 
     @Test
