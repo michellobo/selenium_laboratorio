@@ -44,9 +44,9 @@ public class AppTest {
         if(System.getProperty("os.name").contains("Mac")){
             System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_mac64/chromedriver");
         } else if (System.getProperty("os.name").contains("Windows")){
-            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_win32");
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_win32/chromedriver.exe");
         } else {
-            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64/chromedriver");
         }
 		SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
 		Date now = new Date();
