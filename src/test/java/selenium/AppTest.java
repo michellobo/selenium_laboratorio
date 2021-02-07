@@ -194,14 +194,6 @@ public class AppTest {
         this.test("4250000", "12000000", output, output2, output1);
     }
 
-/*
-	@Test
-	public void prueba() {
-        LOGGER.log(Level.INFO, "########################################> prueba <########################################");
-		this.test("1900000", "12000000", "1.200.000", "10.800.000", "96.000");
-	}
-*/
-
 	@After
 	public void tearDown() {
 		driver.close(); // Cierra el navegador actual abierto por el Script
