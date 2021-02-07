@@ -40,12 +40,17 @@ public class AppTest {
         pattern = "###,###,###";
         myFormatter = new DecimalFormat(pattern,DecimalFormatSymbols.getInstance(Locale.GERMANY));
 		System.out.println("Iniciando configuración...");
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+        System.out.println(System.getProperty("os.name"));
+        if(System.getProperty("os.name").contains("Mac")){
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_mac64/chromedriver");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+        }
 		SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
 		Date now = new Date();
 		String strDate = sdfDate.format(now);
         driver = new ChromeDriver();
-		// Call MiNdicador API para UF Online
+		// Call Mindicador API para UF Online
 		String uri = "https://mindicador.cl/api/uf/" + strDate;
 		JsonNode body;
 		try {
