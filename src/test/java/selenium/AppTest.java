@@ -57,7 +57,8 @@ public class AppTest {
 		JsonNode body;
 		try {
 			body = Unirest.get(uri).asJson().getBody();
-			JSONObject json = body.getObject();
+            JSONObject json = body.getObject();
+            System.out.println(json);
 			uf = json.getJSONArray("serie").getJSONObject(0).getDouble("valor");
 		} catch (UnirestException e) {
 			LOGGER.log(Level.INFO, "error---- " + e + " ----");
